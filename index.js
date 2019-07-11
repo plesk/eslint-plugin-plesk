@@ -2,15 +2,16 @@ module.exports = {
     rules: {
         'data-type-required': {
             create: context => {
-                const requiredNames = ['Drawer', 'Dialog', 'Popover'];
+                const [options = {}] = context.options;
+                const elements = ['Drawer'].concat(options.additionalElements || []);
 
                 return {
                     JSXOpeningElement: node => {
-                        if (!requiredNames.includes(node.name.name)) {
+                        if (!elements.includes(node.name.name)) {
                             return;
                         }
 
-                        const [dataTypeAttribute] = node.attributes.filter(attr => attr.name.name === 'data-type');
+                        const [dataTypeAttribute] = node.attributes.filter(attr => attr.name && attr.name.name === 'data-type');
 
                         if (!dataTypeAttribute) {
                             context.report({
