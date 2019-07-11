@@ -1,0 +1,22 @@
+{
+  "name": "@plesk/eslint-plugin-plesk",
+  "version": "0.0.0",
+  "description": "Plesk ESLint plugin",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "eslint ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@plesk/eslint-config": "^0.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plesk/eslint-plugin.git"
+  },
+  "author": "Evgenii Karagodin",
+  "license": "Apache-2.0"
+}
