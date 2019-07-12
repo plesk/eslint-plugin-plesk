@@ -1,27 +1,29 @@
+const { elementType, getProp, getPropValue } = require('jsx-ast-utils');
+
 module.exports = {
     rules: {
         'data-type-required': {
-            create: context => {
-                const [options = {}] = context.options;
-                const elements = ['Drawer'].concat(options.additionalElements || []);
+            create: context => ({
+                JSXOpeningElement: node => {
+                    const [options = {}] = context.options;
+                    const elements = ['Drawer'].concat(options.additionalElements || []);
+                    const nodeType = elementType(node);
 
-                return {
-                    JSXOpeningElement: node => {
-                        if (!elements.includes(node.name.name)) {
-                            return;
-                        }
+                    if (!elements.includes(nodeType)) {
+                        return;
+                    }
 
-                        const [dataTypeAttribute] = node.attributes.filter(attr => attr.name && attr.name.name === 'data-type');
+                    const prop = getProp(node.attributes, 'data-type');
+                    const propValue = getPropValue(prop);
 
-                        if (!dataTypeAttribute) {
-                            context.report({
-                                node,
-                                message: 'Expect data-type attribute for this element',
-                            });
-                        }
-                    },
-                };
-            },
+                    if (!prop || !propValue) {
+                        context.report({
+                            node,
+                            message: `<${nodeType}> components must have a valid "data-type" attribute`,
+                        });
+                    }
+                },
+            }),
         },
     },
 };

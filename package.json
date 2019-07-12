@@ -9,7 +9,9 @@
   "scripts": {
     "test": "eslint ."
   },
-  "dependencies": {},
+  "dependencies": {
+    "jsx-ast-utils": "^2.2.1"
+  },
   "devDependencies": {
     "@plesk/eslint-config": "^0.0.8"
   },
