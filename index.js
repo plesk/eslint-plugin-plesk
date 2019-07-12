@@ -16,7 +16,7 @@ module.exports = {
                     const prop = getProp(node.attributes, 'data-type');
                     const propValue = getPropValue(prop);
 
-                    if (!prop || !propValue) {
+                    if (!prop || !propValue || typeof propValue !== 'string') {
                         context.report({
                             node,
                             message: `<${nodeType}> components must have a valid "data-type" attribute`,
