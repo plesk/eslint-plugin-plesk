@@ -1,6 +1,6 @@
 {
   "name": "@plesk/eslint-plugin-plesk",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "description": "Plesk ESLint plugin",
   "main": "index.js",
   "files": [
