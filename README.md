@@ -15,9 +15,16 @@ npm install --save-dev @plesk/eslint-plugin-plesk
 
 ## Usage
 
-Put into your `.eslintrc`
-```json
-{
-  "plugins": "@plesk/eslint-plugin-plesk"
-}
+Put into your `eslint.config.mjs`:
+```js
+
+import pleskPlugin from "@plesk/eslint-plugin-plesk";
+
+export default [
+    {
+        plugins: {
+            '@plesk/plesk': pleskPlugin,
+        },
+    },
+]
 ```
